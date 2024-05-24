@@ -1,13 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { createContext } from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { formData } from "./data/data";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+export const TodoContext = createContext({
+  allTodos: formData,
+  setAllTodos: () => {},
+});
+
 root.render(
   <React.StrictMode>
-    <App />
+    <TodoContext.Provider value={{ formData }}>
+      <App />
+    </TodoContext.Provider>
   </React.StrictMode>
 );
 
